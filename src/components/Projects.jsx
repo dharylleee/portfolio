@@ -26,7 +26,7 @@ function Projects() {
                     },
                     {
                         name: "TO DO LIST",
-                        href: "array objects/index.html",
+                        href: "https://to-do-client-iq6f.vercel.app/",
                         desc: "Description of the fourth project.",
                     },
                 ].map((project, index) => (
