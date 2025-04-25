@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculator </title>
+    <script src="./js/numbers.js"></script>
+    <script src="./js/operations.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f710c5;
+        }
+        #display1 {
+            width: 325px;
+        }
+        #display2 {
+            width: 200px;
+        }
+        #operator {
+            width: 100px;
+        }
+        .calculator {
+            background: #fff;
+            width: 350px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input {
+            width: 150px;
+            height: 50px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #605f5f;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .calculator .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .calculator button {
+            height: 50px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #a8a5a5;
+            color: #333;
+        }
+        .calculator button.operator {
+            background: rgb(206, 100, 206);
+            color: #fff;
+        }
+        .calculator button.equal {
+            background: rgb(210, 114, 146);
+            color: #fff;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display1" value="0">
+        <input type="text" id="display2" value="0">
+        <input type="text" id="operator">
+        <div class="buttons">
+            <button type="button" onclick="seven()">7</button>
+            <button type="button" onclick="eight()">8</button>
+            <button type="button" onclick="nine()">9</button>
+            <button class="operator" onclick="add()">+</button>
+            <button type="button" onclick="four()">4</button>
+            <button type="button" onclick="five()">5</button>
+            <button type="button" onclick="six()">6</button>
+            <button class="operator" onclick="minus()">-</button>
+            <button type="button" onclick="one()">1</button>
+            <button type="button" onclick="two()">2</button>
+            <button type="button" onclick="three()">3</button>
+            <button class="operator" onclick="times()">*</button>
+            <button type="button" onclick="zero()">0</button>
+            <button onclick="period()">.</button>
+            <button class="equal" onclick="equal()">=</button>
+            <button class="operator" onclick="divide()">/</button>
+            
+        </div>
+    </div>
+</body>
+</html>
