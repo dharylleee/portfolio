@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        let names = ["DHARYLLE", "XYRELLE", "JADE", "CHRISTIAN", "ALLEN"];
+
+        let employees = [];
+
+        function addEmployee() {
+            let empId = document.getElementById("emp_id").value; 
+            let empName = document.getElementById("emp_name").value; 
+            let empPosition = document.getElementById("emp_position").value; 
+
+            if (empId && empName && empPosition) {
+                employees.push({ "emp_id": empId, "name": empName, "position": empPosition });
+                showEmployees();
+            } else {
+                alert("Please fill all fields");
+            }
+        }
+
+        function showEmployees() {
+            let table = document.getElementById("employeeBody");
+            table.innerHTML = "";
+            employees.forEach(emp => {
+                let row = `<tr><td>${emp.emp_id}</td><td>${emp.name}</td><td>${emp.position}</td></tr>`;
+                table.innerHTML += row;
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>EMPLOYEE REGISTRATION</h2>
+    <input type="text" id="emp_id" placeholder="Employee ID"> <br/>
+    <input type="text" id="emp_name" placeholder="NAME"> <br/>
+    <input type="text" id="emp_position" placeholder="POSITION"> <br/>
+    <button type="button" onclick="addEmployee()">ADD EMPLOYEE</button> <br/>
+
+    <div>
+        <h2>EMPLOYEE LIST</h2>
+        <button type="button" onclick="showEmployees()">SHOW EMPLOYEES</button>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>EMPLOYEE ID</th>
+                    <th>NAME</th>
+                    <th>POSITION</th>
+                </tr>
+            </thead>
+            <tbody id="employeeBody">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
