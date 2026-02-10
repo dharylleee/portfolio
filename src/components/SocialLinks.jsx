@@ -7,7 +7,8 @@ import {
   FaTwitter,
   FaEnvelope,
   FaChevronLeft,
-  FaChevronRight
+  FaChevronRight,
+  FaExternalLinkAlt
 } from 'react-icons/fa';
 
 function SocialLinks() {
@@ -75,7 +76,7 @@ function SocialLinks() {
   return (
     <>
       {/* Desktop Version - Full Screen with Toggle */}
-      <div className="hidden lg:fixed hidden lg:block inset-0 z-40 pointer-events-none">
+      <div className="hidden lg:block fixed inset-0 z-40 pointer-events-none">
         {/* Sliding Panel Background */}
         <div className={`fixed inset-y-0 right-0 w-full md:w-1/2 lg:w-96 bg-gradient-to-l from-gray-900/95 via-gray-900/90 to-transparent backdrop-blur-lg transition-all duration-500 pointer-events-auto ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
