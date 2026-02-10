@@ -29,10 +29,10 @@ function FrontPage() {
         ))}
       </div>
 
-      <div className="relative flex flex-col lg:flex-row min-h-screen">
+      <div className="relative flex flex-col lg:flex-row min-h-screen items-center lg:items-center gap-8 lg:gap-0">
         {/* Left Content Section */}
-        <div className="lg:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-12 lg:py-0 order-2 lg:order-1">
-          <div className="max-w-2xl">
+        <div className="lg:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-12 lg:px-12 py-12 lg:py-0 order-2 lg:order-1 w-full">
+          <div className="max-w-xl">
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="block mb-2">Hello, I'm</span>
@@ -118,13 +118,13 @@ function FrontPage() {
         </div>
 
         {/* Right Image Section */}
-        <div className="lg:w-1/2 relative order-1 lg:order-2 flex items-center justify-center lg:justify-end lg:pr-12 py-8 lg:py-0">
+        <div className="lg:w-1/2 relative order-1 lg:order-2 flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-12 w-full">
           <div className="relative">
             {/* Instagram Style Profile Photo Container */}
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
+            <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               {/* Gradient Border Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl p-1 shadow-2xl shadow-purple-500/30">
-                <div className="w-full h-full bg-gray-900 rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-3xl p-1 shadow-2xl shadow-purple-500/30">
+                <div className="w-full h-full bg-gray-900 rounded-3xl overflow-hidden">
                   {/* Profile Image */}
                   <img 
                     src="/4.png" 
@@ -135,13 +135,13 @@ function FrontPage() {
               </div>
               
               {/* Decorative Badge */}
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-gray-900 flex items-center justify-center shadow-lg animate-bounce">
-                <span className="text-2xl">👋</span>
+              <div className="absolute -bottom-4 -right-4 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-gray-900 flex items-center justify-center shadow-lg animate-bounce text-lg sm:text-2xl">
+                <span>👋</span>
               </div>
             </div>
 
             {/* Floating Badge for larger screens */}
-            <div className="hidden md:block absolute -bottom-16 left-1/2 -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm rounded-xl p-3 border border-gray-700 whitespace-nowrap">
+            <div className="hidden md:block absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm rounded-xl p-3 border border-gray-700 whitespace-nowrap">
               <p className="text-xs sm:text-sm text-gray-300">
                 "Technology & Community Service"
               </p>
@@ -149,7 +149,7 @@ function FrontPage() {
           </div>
 
           {/* Scroll Indicator for Mobile */}
-          <div className="lg:hidden absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center">
+          <div className="lg:hidden absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center">
             <div className="animate-bounce">
               <div className="w-6 h-10 border-2 border-indigo-500/50 rounded-full flex justify-center">
                 <div className="w-1 h-3 bg-gradient-to-b from-indigo-400 to-purple-400 rounded-full mt-2 animate-pulse"></div>

@@ -12,7 +12,7 @@ import {
 } from 'react-icons/fa';
 
 function SocialLinks() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredIcon, setHoveredIcon] = useState(null);
 
@@ -76,9 +76,9 @@ function SocialLinks() {
   return (
     <>
       {/* Desktop Version - Full Screen with Toggle */}
-      <div className="hidden lg:block fixed inset-0 z-40 pointer-events-none">
+      <div className="hidden md:block fixed inset-0 z-40 pointer-events-none">
         {/* Sliding Panel Background */}
-        <div className={`fixed inset-y-0 right-0 w-full md:w-1/2 lg:w-96 bg-gradient-to-l from-gray-900/95 via-gray-900/90 to-transparent backdrop-blur-lg transition-all duration-500 pointer-events-auto ${
+        <div className={`fixed inset-y-0 right-0 w-full sm:w-96 md:w-80 lg:w-96 bg-gradient-to-l from-gray-900/95 via-gray-900/90 to-transparent backdrop-blur-lg transition-all duration-500 pointer-events-auto ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           {/* Close Button */}
@@ -137,21 +137,21 @@ function SocialLinks() {
         </div>
 
         {/* Toggle Button - Fixed */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 border border-gray-700 flex items-center justify-center text-white text-lg md:text-xl transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/50 pointer-events-auto group ${
-            isOpen ? 'hidden' : 'flex'
-          }`}
-          aria-label="Show social links"
-        >
-          {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
-        </button>
+        {!isOpen && (
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 border border-gray-700 flex items-center justify-center text-white text-lg md:text-xl transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/50 pointer-events-auto"
+            aria-label="Show social links"
+          >
+            <FaChevronLeft />
+          </button>
+        )}
       </div>
 
       {/* Mobile Version - Full Screen Overlay */}
-      <div className="lg:hidden fixed inset-0 z-40 pointer-events-none">
+      <div className="md:hidden fixed inset-0 z-40 pointer-events-none">
         {/* Sliding Panel Background */}
-        <div className={`fixed inset-y-0 right-0 w-full sm:w-2/3 bg-gradient-to-l from-gray-900/95 via-gray-900/90 to-transparent backdrop-blur-lg transition-all duration-500 pointer-events-auto ${
+        <div className={`fixed inset-y-0 right-0 w-full xs:w-3/4 sm:w-2/3 bg-gradient-to-l from-gray-900/95 via-gray-900/90 to-transparent backdrop-blur-lg transition-all duration-500 pointer-events-auto ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           {/* Close Button */}
@@ -203,15 +203,15 @@ function SocialLinks() {
         </div>
 
         {/* Toggle Button - Fixed Bottom Right for Mobile */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 border border-gray-700 flex items-center justify-center text-white text-lg shadow-lg shadow-indigo-500/30 active:scale-95 transition-all pointer-events-auto ${
-            isOpen ? 'hidden' : 'flex'
-          }`}
-          aria-label="Show social links"
-        >
-          {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
-        </button>
+        {!isOpen && (
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 border border-gray-700 flex items-center justify-center text-white text-lg shadow-lg shadow-indigo-500/30 active:scale-95 transition-all pointer-events-auto"
+            aria-label="Show social links"
+          >
+            <FaChevronLeft />
+          </button>
+        )}
       </div>
     </>
   );
