@@ -140,12 +140,7 @@ function FrontPage() {
               </div>
             </div>
 
-            {/* Floating Badge for larger screens */}
-            <div className="hidden md:block absolute -bottom-16 left-1/2 -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm rounded-xl p-3 border border-gray-700 whitespace-nowrap">
-              <p className="text-xs sm:text-sm text-gray-300">
-                "Technology & Community Service"
-              </p>
-            </div>
+
           </div>
 
           {/* Scroll Indicator for Mobile */}
