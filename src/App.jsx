@@ -41,8 +41,16 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
-      {/* Desktop Navigation */}
-      <nav className="hidden md:fixed md:top-6 md:right-6 md:z-50 md:flex md:gap-2 md:flex-row">
+      {/* Header with Welcome Text and Desktop Navigation */}
+      <div className="hidden md:fixed md:top-6 md:left-6 md:right-6 md:z-50 md:flex md:items-center md:justify-between">
+        {/* Welcome Text */}
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-pulse"></span>
+          <span className="text-sm font-medium text-indigo-300">Welcome to my portfolio</span>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="flex gap-2 flex-row">
         {navItems.map((item) => (
           <button
             key={item.id}
@@ -56,7 +64,8 @@ function App() {
             {item.label}
           </button>
         ))}
-      </nav>
+        </nav>
+      </div>
 
       {/* Mobile Navigation Header */}
       <div className="md:hidden fixed top-4 right-4 z-50">
