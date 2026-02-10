@@ -33,12 +33,6 @@ function FrontPage() {
         {/* Left Content Section */}
         <div className="lg:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-12 lg:py-0 order-2 lg:order-1">
           <div className="max-w-2xl">
-            {/* Welcome Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full border border-indigo-500/30 mb-8">
-              <span className="w-2 h-2 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-pulse"></span>
-              <span className="text-sm font-medium text-indigo-300">Welcome to my portfolio</span>
-            </div>
-
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="block mb-2">Hello, I'm</span>
