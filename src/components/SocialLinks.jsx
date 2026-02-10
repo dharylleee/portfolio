@@ -69,86 +69,83 @@ function SocialLinks() {
 
   return (
     <>
-      {/* Desktop Version - Vertical Sidebar */}
-      <div className="hidden md:flex flex-col items-center fixed right-6 top-1/2 -translate-y-1/2 z-50">
-        {/* Toggle Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="mb-4 w-10 h-10 rounded-full bg-gray-800/80 backdrop-blur-sm border border-gray-700 flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 group"
-          aria-label={isOpen ? "Hide social links" : "Show social links"}
-        >
-          {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
-        </button>
+      {/* Full Screen Backdrop */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
-        {/* Social Links Container */}
-        <div className={`space-y-4 transition-all duration-500 ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'}`}>
-          {socialLinks.map((link, index) => (
-            <div key={index} className="relative group">
-              {/* Tooltip */}
-              <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                <div className="bg-gray-900 text-white px-3 py-2 rounded-lg whitespace-nowrap text-sm border border-gray-700 shadow-xl">
-                  <div className="font-medium">{link.label}</div>
-                </div>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45 border-r border-b border-gray-700"></div>
-              </div>
+      {/* Full Screen Modal */}
+      <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-500 pointer-events-none ${isOpen ? 'pointer-events-auto' : ''}`}>
+        <div className={`w-full max-w-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl border border-gray-700 p-8 md:p-12 shadow-2xl shadow-indigo-500/20 transition-all duration-500 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
+          
+          {/* Close Button */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-gray-800/80 hover:bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300"
+            aria-label="Close social links"
+          >
+            <FaChevronRight className="text-lg" />
+          </button>
 
-              {/* Social Icon */}
+          {/* Header */}
+          <div className="mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Connect With Me</h2>
+            <p className="text-gray-400 text-sm md:text-base">Find me on social platforms</p>
+          </div>
+
+          {/* Social Links Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            {socialLinks.map((link, index) => (
               <a
+                key={index}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-16 h-16 rounded-full ${link.bgColor} border border-gray-700 flex items-center justify-center text-white text-3xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gray-900/30 ${link.hoverColor} relative overflow-hidden`}
+                className={`flex flex-col items-center justify-center p-6 md:p-8 rounded-xl md:rounded-2xl ${link.bgColor} border border-gray-700 hover:border-indigo-500/50 group transition-all duration-300 hover:scale-105 hover:shadow-lg md:hover:shadow-xl`}
+                aria-label={link.label}
                 onMouseEnter={() => setHoveredIcon(index)}
                 onMouseLeave={() => setHoveredIcon(null)}
-                aria-label={link.label}
               >
-                {/* Animated Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                <span className="relative z-10">{link.icon}</span>
-                
+                {/* Icon */}
+                <div className="text-4xl md:text-5xl mb-3 group-hover:scale-110 transition-transform">
+                  {link.icon}
+                </div>
+
+                {/* Label */}
+                <h3 className="text-white font-semibold text-sm md:text-lg text-center group-hover:text-indigo-300 transition-colors">
+                  {link.label}
+                </h3>
+
                 {/* Pulse Animation on Hover */}
                 {hoveredIcon === index && (
-                  <div className="absolute inset-0 border-2 border-white/30 rounded-full animate-ping"></div>
+                  <div className="absolute inset-0 border-2 border-white/10 rounded-xl md:rounded-2xl animate-pulse"></div>
                 )}
               </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Connecting Line */}
-        <div className="h-32 w-0.5 bg-gradient-to-b from-indigo-500/30 via-purple-500/30 to-pink-500/30 mt-4"></div>
-      </div>
-
-      {/* Mobile Version - Bottom Bar */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <div className="bg-gray-900/90 backdrop-blur-lg rounded-full px-4 py-3 border border-gray-700 shadow-2xl flex items-center gap-3">
-          {socialLinks.slice(0, 4).map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`w-14 h-14 rounded-full ${link.bgColor} flex items-center justify-center text-white text-2xl transition-all duration-300 active:scale-95 ${link.hoverColor} relative`}
-              aria-label={link.label}
-            >
-              {/* Touch Feedback */}
-              <div className="absolute inset-0 rounded-full bg-white/0 active:bg-white/10 transition-colors"></div>
-              <span className="relative">{link.icon}</span>
-            </a>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Floating Email Button for Mobile */}
-      <div className="md:hidden fixed bottom-6 right-6 z-50">
-        <a
-          href="mailto:alagaodharylle@gmail.com"
-          className="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white text-xl shadow-lg shadow-red-900/30 active:scale-95 transition-transform"
-          aria-label="Send Email"
-        >
-          <FaEnvelope />
-        </a>
-      </div>
+      {/* Toggle Button - Desktop */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="hidden md:fixed md:right-6 md:top-1/2 md:-translate-y-1/2 md:z-50 md:flex md:w-14 md:h-14 md:rounded-full md:bg-gradient-to-r md:from-indigo-600 md:to-purple-600 md:border md:border-gray-700 md:items-center md:justify-center md:text-white md:text-xl md:shadow-lg md:shadow-indigo-500/40 md:hover:shadow-indigo-500/60 md:transition-all md:hover:scale-110"
+        aria-label="Show social links"
+      >
+        <FaChevronLeft />
+      </button>
+
+      {/* Toggle Button - Mobile */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 border border-gray-700 flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/40 active:scale-95 transition-all"
+        aria-label="Show social links"
+      >
+        <FaChevronLeft />
+      </button>
     </>
   );
 }
