@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FrontPage from './components/FrontPage';
 import About from './components/About';
 import Projects from './components/Projects';
+import Certificates from './components/Certificates';
 import SocialLinks from './components/SocialLinks';
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
         return <About />;
       case 'projects':
         return <Projects />;
+      case 'certificates':
+        return <Certificates />;
       case 'social':
         return <SocialLinks />;
       case 'home':
@@ -42,6 +45,12 @@ function App() {
           className="text-white hover:text-red-500 text-lg transition"
         >
           Projects
+        </button>
+        <button
+          onClick={() => setCurrentSection('certificates')}
+          className="text-white hover:text-red-500 text-lg transition"
+        >
+          Certificates
         </button>
         <button
           onClick={() => setCurrentSection('social')}
