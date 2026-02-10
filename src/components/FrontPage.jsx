@@ -124,31 +124,38 @@ function FrontPage() {
         </div>
 
         {/* Right Image Section */}
-        <div className="lg:w-1/2 relative order-1 lg:order-2">
-          <div
-            className="relative h-64 sm:h-80 md:h-96 lg:h-full w-full bg-cover bg-center"
-            style={{ backgroundImage: 'url(/4.png)' }}
-          >
-            {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/50 to-transparent lg:bg-gradient-to-r lg:from-gray-900/90 lg:via-gray-900/50 lg:to-transparent"></div>
-            
-            {/* Decorative Elements */}
-            <div className="absolute top-8 right-8">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center backdrop-blur-sm">
+        <div className="lg:w-1/2 relative order-1 lg:order-2 flex items-center justify-center lg:justify-end lg:pr-12 py-8 lg:py-0">
+          <div className="relative">
+            {/* Instagram Style Profile Photo Container */}
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
+              {/* Gradient Border Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl p-1 shadow-2xl shadow-purple-500/30">
+                <div className="w-full h-full bg-gray-900 rounded-2xl overflow-hidden">
+                  {/* Profile Image */}
+                  <img 
+                    src="/4.png" 
+                    alt="Dharylle Austria Alagao"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+              
+              {/* Decorative Badge */}
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-gray-900 flex items-center justify-center shadow-lg animate-bounce">
                 <span className="text-2xl">👋</span>
               </div>
             </div>
-            
-            {/* Floating Badge */}
-            <div className="absolute bottom-8 left-8 bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-700 max-w-xs">
-              <p className="text-sm text-gray-300">
-                "Dedicated to bridging technology and community service"
+
+            {/* Floating Badge for larger screens */}
+            <div className="hidden md:block absolute -bottom-16 left-1/2 -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm rounded-xl p-3 border border-gray-700 whitespace-nowrap">
+              <p className="text-xs sm:text-sm text-gray-300">
+                "Technology & Community Service"
               </p>
             </div>
           </div>
 
           {/* Scroll Indicator for Mobile */}
-          <div className="lg:hidden flex justify-center py-6">
+          <div className="lg:hidden absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center">
             <div className="animate-bounce">
               <div className="w-6 h-10 border-2 border-indigo-500/50 rounded-full flex justify-center">
                 <div className="w-1 h-3 bg-gradient-to-b from-indigo-400 to-purple-400 rounded-full mt-2 animate-pulse"></div>
