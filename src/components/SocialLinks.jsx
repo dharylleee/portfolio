@@ -90,8 +90,18 @@ function SocialLinks() {
             <FaChevronRight className="text-lg" />
           </button>
 
+          {/* Header Image */}
+          <div className="relative h-48 md:h-56 overflow-hidden">
+            <img 
+              src="/2.jpg" 
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/90"></div>
+          </div>
+
           {/* Header */}
-          <div className="p-8 md:p-12 pt-20">
+          <div className="p-8 md:p-12 pt-6">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Connect With Me</h2>
             <p className="text-gray-400 text-sm md:text-base">Find me on social platforms and get in touch</p>
           </div>
@@ -163,8 +173,18 @@ function SocialLinks() {
             <FaChevronRight className="text-lg" />
           </button>
 
+          {/* Header Image */}
+          <div className="relative h-40 overflow-hidden">
+            <img 
+              src="/2.jpg" 
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/90"></div>
+          </div>
+
           {/* Header */}
-          <div className="p-6 pt-20">
+          <div className="p-6 pt-4">
             <h2 className="text-2xl font-bold text-white mb-2">Connect With Me</h2>
             <p className="text-gray-400 text-sm">Find me on social platforms</p>
           </div>
