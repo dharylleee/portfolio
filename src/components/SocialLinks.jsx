@@ -69,86 +69,137 @@ function SocialLinks() {
 
   return (
     <>
-      {/* Desktop Version - Vertical Sidebar */}
-      <div className="hidden md:flex flex-col items-center fixed right-6 top-1/2 -translate-y-1/2 z-50">
-        {/* Toggle Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="mb-4 w-10 h-10 rounded-full bg-gray-800/80 backdrop-blur-sm border border-gray-700 flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 group"
-          aria-label={isOpen ? "Hide social links" : "Show social links"}
-        >
-          {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
-        </button>
+      {/* Desktop Version - Full Screen Overlay */}
+      {isOpen && (
+        <div className="hidden md:fixed md:inset-0 md:z-40 md:bg-black/30 md:backdrop-blur-sm">
+          {/* Close on backdrop click */}
+          <div 
+            className="fixed inset-0"
+            onClick={() => setIsOpen(false)}
+          />
+        </div>
+      )}
 
-        {/* Social Links Container */}
-        <div className={`space-y-4 transition-all duration-500 ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'}`}>
-          {socialLinks.map((link, index) => (
-            <div key={index} className="relative group">
-              {/* Tooltip */}
-              <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                <div className="bg-gray-900 text-white px-3 py-2 rounded-lg whitespace-nowrap text-sm border border-gray-700 shadow-xl">
-                  <div className="font-medium">{link.label}</div>
-                </div>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45 border-r border-b border-gray-700"></div>
-              </div>
+      {/* Desktop Version - Full Screen Panel */}
+      <div className={`hidden md:fixed md:inset-0 md:z-50 md:flex md:items-center md:justify-center transition-all duration-500 pointer-events-none ${isOpen ? 'pointer-events-auto' : ''}`}>
+        {/* Full Screen Social Panel */}
+        <div className={`w-full h-full md:w-auto md:h-auto md:bg-gradient-to-br md:from-gray-900 md:via-gray-800 md:to-gray-900 md:rounded-2xl md:p-12 md:border md:border-gray-700 md:shadow-2xl md:shadow-indigo-500/20 md:max-w-2xl transition-all duration-500 ${isOpen ? 'md:scale-100 md:opacity-100' : 'md:scale-95 md:opacity-0 pointer-events-none'}`}>
+          
+          {/* Close Button */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-6 right-6 md:relative md:top-0 md:right-0 md:mb-8 md:ml-auto md:block w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800/80 hover:bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300"
+            aria-label="Close social links"
+          >
+            <FaChevronRight className="text-lg md:text-xl" />
+          </button>
 
-              {/* Social Icon */}
+          {/* Header */}
+          <div className="mb-8 md:text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Connect With Me</h2>
+            <p className="text-gray-400 text-sm md:text-base">Find me on social platforms</p>
+          </div>
+
+          {/* Social Links Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {socialLinks.map((link, index) => (
               <a
+                key={index}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-12 h-12 rounded-full ${link.bgColor} border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gray-900/30 ${link.hoverColor} relative overflow-hidden`}
+                className={`flex flex-col items-center justify-center p-6 md:p-8 rounded-xl md:rounded-2xl ${link.bgColor} border border-gray-700 hover:border-indigo-500/50 group transition-all duration-300 hover:scale-105 hover:shadow-lg md:hover:shadow-xl`}
+                aria-label={link.label}
                 onMouseEnter={() => setHoveredIcon(index)}
                 onMouseLeave={() => setHoveredIcon(null)}
-                aria-label={link.label}
               >
-                {/* Animated Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                <span className="relative z-10">{link.icon}</span>
-                
+                {/* Icon */}
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-900/50 backdrop-blur-sm flex items-center justify-center text-white text-2xl md:text-4xl mb-3 group-hover:scale-110 transition-transform">
+                  {link.icon}
+                </div>
+
+                {/* Label */}
+                <h3 className="text-white font-semibold text-sm md:text-lg text-center group-hover:text-indigo-300 transition-colors">
+                  {link.label}
+                </h3>
+
                 {/* Pulse Animation on Hover */}
                 {hoveredIcon === index && (
-                  <div className="absolute inset-0 border-2 border-white/30 rounded-full animate-ping"></div>
+                  <div className="absolute inset-0 border-2 border-white/10 rounded-xl md:rounded-2xl animate-pulse"></div>
                 )}
               </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Connecting Line */}
-        <div className="h-32 w-0.5 bg-gradient-to-b from-indigo-500/30 via-purple-500/30 to-pink-500/30 mt-4"></div>
-      </div>
-
-      {/* Mobile Version - Bottom Bar */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <div className="bg-gray-900/90 backdrop-blur-lg rounded-full px-4 py-3 border border-gray-700 shadow-2xl flex items-center gap-3">
-          {socialLinks.slice(0, 4).map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`w-10 h-10 rounded-full ${link.bgColor} flex items-center justify-center text-white text-lg transition-all duration-300 active:scale-95 ${link.hoverColor} relative`}
-              aria-label={link.label}
-            >
-              {/* Touch Feedback */}
-              <div className="absolute inset-0 rounded-full bg-white/0 active:bg-white/10 transition-colors"></div>
-              <span className="relative">{link.icon}</span>
-            </a>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Floating Email Button for Mobile */}
-      <div className="md:hidden fixed bottom-6 right-6 z-50">
-        <a
-          href="mailto:alagaodharylle@gmail.com"
-          className="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white text-xl shadow-lg shadow-red-900/30 active:scale-95 transition-transform"
-          aria-label="Send Email"
-        >
-          <FaEnvelope />
-        </a>
+      {/* Toggle Button - Fixed */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 border border-gray-700 flex-col items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all hover:scale-110"
+        aria-label={isOpen ? "Hide social links" : "Show social links"}
+      >
+        {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
+      </button>
+
+      {/* Mobile Version - Full Screen Panel */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+      )}
+      
+      <div className={`md:hidden fixed inset-0 z-50 flex flex-col overflow-y-auto transition-all duration-500 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'}`}>
+        {/* Full Screen Mobile Panel */}
+        <div className="flex-1 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col p-6">
+          
+          {/* Close Button */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="self-end w-10 h-10 rounded-full bg-gray-800/80 hover:bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 mb-6"
+            aria-label="Close social links"
+          >
+            <FaChevronRight className="text-lg" />
+          </button>
+
+          {/* Header */}
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white mb-2">Connect With Me</h2>
+            <p className="text-gray-400 text-sm">Find me on social platforms</p>
+          </div>
+
+          {/* Social Links Grid */}
+          <div className="grid grid-cols-2 gap-4 flex-1">
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex flex-col items-center justify-center p-6 rounded-xl ${link.bgColor} border border-gray-700 hover:border-indigo-500/50 group transition-all duration-300 active:scale-95`}
+                aria-label={link.label}
+              >
+                {/* Icon */}
+                <div className="text-4xl mb-3">
+                  {link.icon}
+                </div>
+
+                {/* Label */}
+                <h3 className="text-white font-semibold text-sm text-center">
+                  {link.label}
+                </h3>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Mobile Toggle Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 border border-gray-700 flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/40 active:scale-95 transition-all"
+        aria-label={isOpen ? "Hide social links" : "Show social links"}
+      >
+        {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
+      </button>
     </>
   );
 }
