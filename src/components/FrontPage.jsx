@@ -121,7 +121,7 @@ function FrontPage() {
         <div className="lg:w-1/2 relative order-1 lg:order-2 flex items-center justify-center lg:justify-end lg:pr-12 py-8 lg:py-0">
           <div className="relative">
             {/* Instagram Style Profile Photo Container */}
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-full lg:h-auto lg:max-w-lg">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
               {/* Gradient Border Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl p-1 shadow-2xl shadow-purple-500/30">
                 <div className="w-full h-full bg-gray-900 rounded-2xl overflow-hidden">
