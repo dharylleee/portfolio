@@ -33,12 +33,6 @@ function FrontPage() {
         {/* Left Content Section */}
         <div className="lg:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-12 lg:py-0 order-2 lg:order-1">
           <div className="max-w-2xl">
-            {/* Welcome Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full border border-indigo-500/30 mb-8">
-              <span className="w-2 h-2 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-pulse"></span>
-              <span className="text-sm font-medium text-indigo-300">Welcome to my portfolio</span>
-            </div>
-
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="block mb-2">Hello, I'm</span>
@@ -127,7 +121,7 @@ function FrontPage() {
         <div className="lg:w-1/2 relative order-1 lg:order-2 flex items-center justify-center lg:justify-end lg:pr-12 py-8 lg:py-0">
           <div className="relative">
             {/* Instagram Style Profile Photo Container */}
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
               {/* Gradient Border Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl p-1 shadow-2xl shadow-purple-500/30">
                 <div className="w-full h-full bg-gray-900 rounded-2xl overflow-hidden">
@@ -140,18 +134,10 @@ function FrontPage() {
                 </div>
               </div>
               
-              {/* Decorative Badge */}
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-gray-900 flex items-center justify-center shadow-lg animate-bounce">
-                <span className="text-2xl">👋</span>
-              </div>
+
             </div>
 
-            {/* Floating Badge for larger screens */}
-            <div className="hidden md:block absolute -bottom-16 left-1/2 -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm rounded-xl p-3 border border-gray-700 whitespace-nowrap">
-              <p className="text-xs sm:text-sm text-gray-300">
-                "Technology & Community Service"
-              </p>
-            </div>
+
           </div>
 
           {/* Scroll Indicator for Mobile */}

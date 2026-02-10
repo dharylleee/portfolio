@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import FrontPage from './components/FrontPage';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -7,6 +8,20 @@ import SocialLinks from './components/SocialLinks';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'certificates', label: 'Certificates' },
+    { id: 'social', label: 'Social Link' },
+  ];
+
+  const handleNavClick = (sectionId) => {
+    setCurrentSection(sectionId);
+    setMobileMenuOpen(false);
+  };
 
   const renderSection = () => {
     switch (currentSection) {
@@ -26,39 +41,54 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
-      {/* Top Right Horizontal Navigation Bar */}
-      <nav className="fixed top-4 right-6 z-50 flex space-x-6  px-6 py-2 shadow-lg">
-        <button
-          onClick={() => setCurrentSection('home')}
-          className="text-white hover:text-red-500 text-lg transition"
-        >
-          Home
-        </button>
-        <button
-          onClick={() => setCurrentSection('about')}
-          className="text-white hover:text-red-500 text-lg transition"
-        >
-          About
-        </button>
-        <button
-          onClick={() => setCurrentSection('projects')}
-          className="text-white hover:text-red-500 text-lg transition"
-        >
-          Projects
-        </button>
-        <button
-          onClick={() => setCurrentSection('certificates')}
-          className="text-white hover:text-red-500 text-lg transition"
-        >
-          Certificates
-        </button>
-        <button
-          onClick={() => setCurrentSection('social')}
-          className="text-white hover:text-red-500 text-lg transition"
-        >
-          Social Link
-        </button>
+      {/* Desktop Navigation */}
+      <nav className="hidden md:fixed md:top-6 md:right-6 md:z-50 md:flex md:gap-2 md:flex-row">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => handleNavClick(item.id)}
+            className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+              currentSection === item.id
+                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/50'
+                : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+            }`}
+          >
+            {item.label}
+          </button>
+        ))}
       </nav>
+
+      {/* Mobile Navigation Header */}
+      <div className="md:hidden fixed top-4 right-4 z-50">
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="p-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/50 transition-all"
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-16 z-40 bg-black/95 backdrop-blur-sm">
+          <nav className="flex flex-col gap-2 p-4">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className={`px-4 py-3 rounded-lg font-medium text-left transition-all duration-300 ${
+                  currentSection === item.id
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
+                    : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+        </div>
+      )}
 
       {/* Rendered Content */}
       <main className="px-6 pt-24 md:px-24">
