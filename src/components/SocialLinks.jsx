@@ -97,7 +97,7 @@ function SocialLinks() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-12 h-12 rounded-full ${link.bgColor} border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gray-900/30 ${link.hoverColor} relative overflow-hidden`}
+                className={`w-16 h-16 rounded-full ${link.bgColor} border border-gray-700 flex items-center justify-center text-white text-3xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gray-900/30 ${link.hoverColor} relative overflow-hidden`}
                 onMouseEnter={() => setHoveredIcon(index)}
                 onMouseLeave={() => setHoveredIcon(null)}
                 aria-label={link.label}
@@ -128,7 +128,7 @@ function SocialLinks() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-10 h-10 rounded-full ${link.bgColor} flex items-center justify-center text-white text-lg transition-all duration-300 active:scale-95 ${link.hoverColor} relative`}
+              className={`w-14 h-14 rounded-full ${link.bgColor} flex items-center justify-center text-white text-2xl transition-all duration-300 active:scale-95 ${link.hoverColor} relative`}
               aria-label={link.label}
             >
               {/* Touch Feedback */}

@@ -134,10 +134,7 @@ function FrontPage() {
                 </div>
               </div>
               
-              {/* Decorative Badge */}
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-gray-900 flex items-center justify-center shadow-lg animate-bounce">
-                <span className="text-2xl">👋</span>
-              </div>
+
             </div>
 
 
